@@ -1,0 +1,622 @@
+--[[
+	
+	
+ ░▒▓█ Caped Warrior (PUBLIC VERSION) █▓▒░
+
+
+--]]
+
+
+local buffs = 15 -- How many times your attack gets buffed
+
+-- Execute this on the main menu of the game, find the keybinds using CTRL+F then searching K == "
+-- Probably will destroy the game ngl, you might get banned but that's kinda rare lol
+-- idk what else to put here
+
+
+
+
+function Notification(title, text)
+    game:GetService("StarterGui"):SetCore("SendNotification", {Title = title, Text = text})
+end
+ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, true)
+    game.Players.LocalPlayer.PlayerGui.CharacterSelection.Character.Value = "Frisk"
+    wait(1)
+game.Players.LocalPlayer.Character.Head.HealthBar.Frame.PName:Destroy()
+game.Players.LocalPlayer.Character.Head.HealthBar.Frame.StaminaBar:Destroy()
+game.Players.LocalPlayer.Backpack:WaitForChild("Main").FriskMoves.Animations.Walk.AnimationId = "rbxassetid://8690977904"
+game.Players.LocalPlayer.Backpack:WaitForChild("Main").FriskMoves.Animations.Idle.AnimationId = "rbxassetid://5079250270"
+game.Players.LocalPlayer.Backpack:WaitForChild("Main").FriskMoves.Animations.Run.AnimationId = "rbxassetid://8691016359"
+game.Players.LocalPlayer.Backpack:WaitForChild("Main").FriskMoves.Animations.Block.AnimationId = "rbxassetid://8692122621"
+game:GetService("Players").LocalPlayer.PlayerScripts.Music:Destroy()
+local v1 = {
+    [1] = getrenv()._G.Pass, 
+    [2] = "Damage", 
+    [3] = math.huge, 
+    [4] = game.Players.LocalPlayer.Character
+}
+local event = game:GetService("ReplicatedStorage").Remotes.Events
+event:FireServer(v1)
+game.Players.LocalPlayer.Character.Humanoid:GetPropertyChangedSignal("Health"):Connect(function()
+    if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+    game.Players.LocalPlayer.Character.Humanoid.Health = 1
+    end
+end)
+
+task.wait(3)
+game.Players.LocalPlayer.Chatted:Connect(function(message)
+    local args = {
+        [1] = {
+            [1] = getrenv()._G.Pass,
+            [2] = "Chatted",
+            [3] = '[ Caped Warrior ]\n' .. message,
+            [4] = Color3.new(1,0,0)
+        }
+    }
+game:GetService("ReplicatedStorage").Remotes.Events:FireServer(unpack(args))
+end)
+
+function chat(message)
+    local args = {
+        [1] = {
+            [1] = getrenv()._G.Pass,
+            [2] = "Chatted",
+            [3] = '[ Caped Warrior ]\n' .. message,
+            [4] = Color3.new(1,0,0)
+        }
+    }
+game:GetService("ReplicatedStorage").Remotes.Events:FireServer(unpack(args))
+    
+end
+_G.hidechat = true
+local mt = getrawmetatable(game)
+local backup = mt.__namecall
+if setreadonly then setreadonly(mt, false) else make_writeable(mt, true) end
+    
+mt.__namecall = newcclosure(function(...)
+    local method = getnamecallmethod()
+    local args = {...}
+    
+    if tostring(args[1]) == "SayMessageRequest" and _G.hidechat then
+        return
+    end
+    return backup(...)
+end)
+local HealthBar = Instance.new("BillboardGui")
+local Frame = Instance.new("Frame")
+local PName = Instance.new("TextLabel")
+local player = game.Players.LocalPlayer
+local TweenService = game:GetService("TweenService")
+HealthBar.Name = "HealthBar" -- the name of the shitty healthbar
+HealthBar.Parent = player.Character.Head -- the parent of the shitty healthbar
+HealthBar.ExtentsOffset = Vector3.new(0, 3, 0) -- offset do not touch 
+HealthBar.Size = UDim2.new(4, 0, 2, 0) -- the size
+Frame.Parent = HealthBar 
+Frame.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Frame.BackgroundTransparency = 1.000
+Frame.Size = UDim2.new(1, 0, 1, 0)
+PName.Name = "PName" -- DONT CHANGE THIS
+PName.Parent = Frame
+PName.BackgroundColor3 = Color3.fromRGB(255, 0,0)
+PName.BackgroundTransparency = 1.000
+PName.Position = UDim2.new(-0.899999976, 0, -0.800000012, 0)
+PName.Size = UDim2.new(3, 0, 1, 0)
+PName.Font = Enum.Font.Arcade -- FONT
+PName.Text = "Caped Warrior" -- CUSTOM NAME
+PName.TextColor3 = Color3.fromRGB(0,0,0)
+PName.TextScaled = true
+PName.TextSize = 5.000
+PName.TextStrokeColor3 = Color3.fromRGB(255,255,255) -- change this for text outline
+PName.TextStrokeTransparency = 0.000
+PName.TextWrapped = true
+PName.TextXAlignment = Enum.TextXAlignment.Center
+PName.TextYAlignment = Enum.TextYAlignment.Top
+PName.Rotation = 5 -- DO NOT FUCK WITH THIS
+
+
+
+local part = PName -- dont change this either
+        
+        local Info = TweenInfo.new(
+            2,                              --Length (seconds)
+            Enum.EasingStyle.Sine,          --Easing Style
+            Enum.EasingDirection.InOut,       --Easing Direction
+            -1,                             --Times Repeated
+            true,                           --reversed
+            0                               --deşau
+            )
+            
+        local Goals = {
+            Rotation = -5
+        } -- properties
+        
+        local nametween = TweenService:Create(part, Info, Goals) -- shit 
+        nametween:Play() -- dont forget this
+        
+        
+
+function talk(msg)
+    local A_1 =  {
+          [1] = getrenv()._G.Pass, 
+          [2] = "Chatted", 
+          [3] = msg,
+          [4] = Color3.fromRGB(255,0,0)
+    }
+    local Event = game:GetService("ReplicatedStorage").Remotes.Events
+    Event:FireServer(A_1)
+end
+
+
+	    		local A_1 = 
+			{
+				[1] = getrenv()._G.Pass,
+				[2] = "Chatted", 
+				[3] = "New dimension found.", 
+				[4] = Color3.new(1,0,0)
+			}
+		local Event = game:GetService("ReplicatedStorage").Remotes.Events
+		Event:FireServer(A_1) 
+wait(5)
+	    		local A_1 = 
+			{
+				[1] = getrenv()._G.Pass,
+				[2] = "Chatted", 
+				[3] = "Overwriting files...", 
+				[4] = Color3.new(1,0,0)
+			}
+		local Event = game:GetService("ReplicatedStorage").Remotes.Events
+		Event:FireServer(A_1) 
+wait(2)
+Notification("Server","Loading cape")
+-- Makes a cape 
+
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "EquipArmor",
+        [3] = "TemmieArmor"
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+game.Players.LocalPlayer.Character.TemmieArmor.LeftArmWeld:Destroy()
+game.Players.LocalPlayer.Character.TemmieArmor.RightArmWeld:Destroy()
+game.Players.LocalPlayer.Character.TemmieArmor.LeftLegWeld:Destroy()
+game.Players.LocalPlayer.Character.TemmieArmor.RightLegWeld:Destroy()
+wait(0.1)
+-- Destroys Tem Logo On Cape
+for i,v in pairs(game.Players.LocalPlayer.Character.TemmieArmor.TorsoWeld.Piece:GetChildren()) do
+            v:Destroy()
+end
+
+
+wait()
+
+-- Destroys everything but cape
+for i,v in pairs(game.Players.LocalPlayer.Character.TemmieArmor.TorsoWeld:GetChildren()) do
+    if v.Name == "Piece" then
+        if #v:GetChildren() == 0 then
+            print("Keeping this one.")
+        else
+            v:Destroy()
+        end
+    end
+end
+
+
+Notification("Server","Loading damage")
+
+-- Infinite Attack Start
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "EquipWeapon",
+        [3] = "RelKnife"
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+game.Players.LocalPlayer.Character.RelKnife.Weapon:Destroy()
+v = buffs
+for i = 1,v do
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "EquipWeapon",
+        [3] = "Stick"
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+wait(0.1)
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "EquipWeapon",
+        [3] = "RelKnife"
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+wait(0.1)
+end
+-- Infinite Attack End 
+
+
+
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "EquipWeapon",
+        [3] = "RelKnife"
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+
+game.Players.LocalPlayer.Character.DarkHead:Destroy()
+
+
+Notification("Server","Fully loaded!\n Have fun!")
+
+ local mouse = game.Players.LocalPlayer:GetMouse() -- Stick gun
+                mouse.KeyDown:Connect(function(k) 
+                    if k == "x" then
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "EquipWeapon",
+        [3] = "EmptyGun"
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+
+wait(0.1)
+
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "GunShot",
+        [3] = "Heavy",
+        [4] = CFrame.new(9999.9999, 9999.9999, -9999.9999) * CFrame.Angles(0, 0, 0)
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+
+wait(0.1)
+
+
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "EquipWeapon",
+        [3] = "RelKnife"
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+end
+end)
+
+ local mouse = game.Players.LocalPlayer:GetMouse() -- Ballet Dance
+                mouse.KeyDown:Connect(function(k) 
+                    if k == "c" then
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "EquipWeapon",
+        [3] = "BalletShoes"
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+
+wait(0.1)
+
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "BalletShoes",
+        [3] = "TwirlKick"
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+
+wait(0.1)
+
+
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "EquipWeapon",
+        [3] = "RelKnife"
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+end
+end)
+
+ local mouse = game.Players.LocalPlayer:GetMouse() -- Knife Slashes
+                mouse.KeyDown:Connect(function(k) 
+                    if k == "3" then
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "RealKnifeSlashes"
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+                        
+end
+end)
+
+
+
+ local mouse = game.Players.LocalPlayer:GetMouse() -- Knife Slashes
+                mouse.KeyDown:Connect(function(k) 
+                    if k == "b" then
+talk("[!]\n\n\n                          + No CD Gun")
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "EquipWeapon",
+        [3] = "EmptyGun"
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+for i = 1,15 do
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "GunShot",
+        [3] = "Light",
+        [4] = CFrame.new(1055.8271484375, 325.50897216796875, -275.490966796875) * CFrame.Angles(1.5905938148498535, 0.12674349546432495, -1.587715744972229)
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+end     
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "EquipWeapon",
+        [3] = "RelKnifes"
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+                        
+end
+end)
+
+ local mouse = game.Players.LocalPlayer:GetMouse() -- NoCD 2
+                mouse.KeyDown:Connect(function(k) 
+                    if k == "2" then
+                        
+talk("[!]\n\n Cooldown reset")                        
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "RealKnifeBaragge"
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+end
+end)
+
+
+
+
+
+local mouse = game.Players.LocalPlayer:GetMouse() -- Realknife 1 because yes
+                mouse.KeyDown:Connect(function(k) 
+                    if k == "1" then
+local args = {
+    [1] = {
+        [1] = getrenv()._G.Pass,
+        [2] = "ToyKnifeCombo"
+    }
+}
+
+game:GetService("ReplicatedStorage").Remotes.FriskMoves:InvokeServer(unpack(args))
+end
+end)
+
+
+local remote = game.ReplicatedStorage.Remotes["FriskMoves"]
+local pass = getrenv()._G.Pass
+local mouse = game.Players.LocalPlayer:GetMouse() 
+                mouse.KeyDown:Connect(function(k) 
+                    if k == "y" then
+
+talk("[!]\n ToughGloves Activated\n\n --PunchBarrage Execute-- ")
+remote:InvokeServer({getrenv()._G.Pass,"ToughGloves", "PunchBarrage"})
+end
+end)
+
+local mouse = game.Players.LocalPlayer:GetMouse() 
+                mouse.KeyDown:Connect(function(k) 
+                    if k == "k" then
+talk("[!]\n\n                      +Infinite Range")
+game.Players.LocalPlayer.Backpack.Main.LockOnScript.LockOn.Value.HumanoidRootPart.Size = Vector3.new(999, 999, 999)
+end
+end)
+
+local mouse = game.Players.LocalPlayer:GetMouse() 
+                mouse.KeyDown:Connect(function(k) 
+	if k == "v" then
+	    talk("[!]\n\n\n Finding new servers...")
+loadstring(game:HttpGet("https://www.scriptblox.com/raw/Server-Browser_80", true))();
+end
+end)
+
+
+
+
+local sitstart = Instance.new("Animation") 
+sitstart.AnimationId = "rbxassetid://7507477136" 
+local sitstartplay = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):LoadAnimation(sitstart)
+local sitloop = Instance.new("Animation") 
+sitloop.AnimationId = "rbxassetid://7507481748" 
+local sitloopplay = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):LoadAnimation(sitloop)
+local sitend = Instance.new("Animation") 
+sitend.AnimationId = "rbxassetid://7507485912" 
+local sitendplay = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):LoadAnimation(sitend) 
+local sitting = false 
+local mouse = game.Players.LocalPlayer:GetMouse()
+mouse.KeyDown:Connect(function(k)
+    if k == "n" then 
+        if sitting == false then 
+        sitting = true
+        sitstartplay:Play() 
+        wait(1)
+        sitloopplay:Play()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+    elseif sitting == true then 
+        sitting = false
+        sitloopplay:Stop() 
+        sitendplay:Play()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+        end
+    end 
+end)
+
+
+
+
+local mouse = game.Players.LocalPlayer:GetMouse()
+mouse.KeyDown:Connect(function(k) 
+	if k == "j" then
+local A_1 = {
+                [1] = getrenv()._G.Pass,
+                [2] = "Chatted",
+                [3] = "Invincibility Deleted. (works on some stuff idk what tbh)",
+                [4] = Color3.new(1, 0, 0)
+            }
+            local Event = game:GetService("ReplicatedStorage").Remotes.Events
+            Event:FireServer(A_1)
+game:GetService("Players").LocalPlayer.Backpack.Main.LockOnScript.LockOn.Value.Inv:Destroy()
+end
+end)
+
+
+local mouse = game.Players.LocalPlayer:GetMouse()
+mouse.KeyDown:Connect(function(k) 
+	if k == "5" then
+talk("[!]\n\n SHATTER!")	    
+                local A_1 = getrenv()._G.Pass
+				local A_2 = game:GetService("Players").LocalPlayer.Backpack.Main.LockOnScript.LockOn.Value
+				local A_3 = 
+					{
+						["HitTime"] = 1, 
+						["Type"] = "Knockback", 
+						["HitEffect"] = "HeavyHitEffect",
+						["HurtAnimation"] = game:GetService("ReplicatedStorage").Animations.HurtAnimations.Knockback1,
+						["Sound"] = game:GetService("ReplicatedStorage").RogueSounds.BaneSound,
+						["Velocity"] = Vector3.new(0,3,0), 
+						["CombatInv"] = true,
+						["Damage"] = 0
+					}
+				local Event = game:GetService("ReplicatedStorage").Remotes.Damage
+				Event:InvokeServer(A_1, A_2, A_3)	    
+wait(0.2)
+for i = 1,10 do
+                local A_1 = getrenv()._G.Pass
+				local A_2 = game:GetService("Players").LocalPlayer.Backpack.Main.LockOnScript.LockOn.Value
+				local A_3 = 
+					{
+						["HitTime"] = 1, 
+						["Type"] = "Normal", 
+						["HitEffect"] = "HeavyHitEffect",
+						["HurtAnimation"] = game:GetService("ReplicatedStorage").Animations.HurtAnimations.Knockback1,
+						["Sound"] = game:GetService("ReplicatedStorage").Sounds.KnifeSwing,
+						["Velocity"] = Vector3.new(0,0.1,0), 
+						["CombatInv"] = true,
+						["Damage"] = 0
+					}
+				local Event = game:GetService("ReplicatedStorage").Remotes.Damage
+				Event:InvokeServer(A_1, A_2, A_3)
+end	    
+                local A_1 = getrenv()._G.Pass
+				local A_2 = game:GetService("Players").LocalPlayer.Backpack.Main.LockOnScript.LockOn.Value
+				local A_3 = 
+					{
+						["HitTime"] = 1, 
+						["Type"] = "Knockback", 
+						["HitEffect"] = "HeavyHitEffect",
+						["HurtAnimation"] = game:GetService("ReplicatedStorage").Animations.HurtAnimations.Knockback1,
+						["Sound"] = game:GetService("ReplicatedStorage").Sounds.HyperGonerLaugh,
+						["Velocity"] = Vector3.new(0,0.0,0), 
+						["CombatInv"] = true,
+						["Damage"] = "NaN"
+					}
+				local Event = game:GetService("ReplicatedStorage").Remotes.Damage
+				Event:InvokeServer(A_1, A_2, A_3)
+
+	end
+end)
+
+
+
+
+
+pcall(function()
+    
+    local funcs = {}
+    
+    for i, v in next, getgc() do
+        
+        if type(v) == "function" then
+            
+            if getfenv(v).script and getfenv(v).script.Name and getfenv(v).script.Name == "LockOnScript" then
+                
+                table.insert(funcs, v)
+                
+            end
+            
+        end
+        
+    end
+    
+    repeat wait() until #funcs ~= 0
+    
+    local target = funcs[#funcs]
+    
+    for i2, v2 in next, getconstants(target) do
+        
+        if i2 == 44 and tostring(v2) == "0" then
+            
+            setconstant(target, i2, -999999)
+            print("hooked")
+            
+        end
+        
+    end
+    
+end)
+
+
+
+
+local uis = game:GetService("UserInputService")
+local player = game.Players.LocalPlayer
+
+uis.InputBegan:Connect(function(inputs, event)
+	if event == true then return end
+	if inputs.KeyCode == Enum.KeyCode.R then
+		if player.Backpack:WaitForChild("Main").LockOnScript.LockOn.Value == nil then
+			local cfr = player:GetMouse().Hit
+			player.Character:SetPrimaryPartCFrame(cfr * CFrame.new(0, 2, 0))
+		else
+			local Tcf = player.Backpack:WaitForChild("Main").LockOnScript.LockOn.Value:GetPrimaryPartCFrame()
+			player.Character:SetPrimaryPartCFrame(Tcf * CFrame.new(0, 0, 3))
+		end
+	end
+end)
